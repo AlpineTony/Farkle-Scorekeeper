@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farkle Scorekeeper</title>
+  <meta name="theme-color" content="#bf5a36">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Farkle">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Dice Night Helper</p>
+      <h1>Farkle Scorekeeper</h1>
+      <p class="subtitle">Add players, enter each turn's score, and let the app keep the running totals and turn order moving.</p>
+    </section>
+
+    <section class="panel setup-panel">
+      <div class="panel-header">
+        <h2>Players</h2>
+        <p>Start with at least two players, then add more anytime.</p>
+      </div>
+
+      <form id="player-form" class="inline-form">
+        <label class="sr-only" for="player-name">Player name</label>
+        <input id="player-name" name="playerName" type="text" maxlength="24" placeholder="Enter player name" autocomplete="off" required>
+        <button type="submit">Add Player</button>
+      </form>
+
+      <div class="player-actions">
+        <button id="start-game" type="button" class="secondary">Start Game</button>
+        <button id="reset-game" type="button" class="ghost">Reset</button>
+      </div>
+
+      <ul id="player-list" class="player-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="panel game-panel">
+      <div class="panel-header">
+        <h2>Score Entry</h2>
+        <p>Type the points earned for the active player on their turn.</p>
+      </div>
+
+      <div id="game-status" class="status-card">
+        <p class="status-label">Current turn</p>
+        <h3 id="active-player">Add at least two players to begin</h3>
+        <p id="turn-count" class="status-note">Round 1</p>
+      </div>
+
+      <form id="score-form" class="score-form">
+        <label for="turn-score">Score for this turn</label>
+        <input id="turn-score" name="turnScore" type="number" min="0" step="50" placeholder="0" disabled required>
+        <button id="submit-score" type="submit" disabled>Add Score</button>
+      </form>
+
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="panel scoreboard-panel">
+      <div class="panel-header">
+        <h2>Scoreboard</h2>
+        <p>Running totals update automatically after every turn.</p>
+      </div>
+
+      <div id="scoreboard" class="scoreboard empty-state">
+        <p>No scores yet. Add players to get rolling.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
